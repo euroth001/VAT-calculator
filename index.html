@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เครื่องคำนวณ VAT & หัก ณ ที่จ่าย</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+<div class="container">
+    <h1>💰 เครื่องคำนวณ VAT & หัก ณ ที่จ่าย</h1>
+
+    <div class="input-group">
+        <label for="inputAmount">ป้อนจำนวนเงิน:</label>
+        <input type="number" id="inputAmount" placeholder="เช่น 10000 หรือ 10700" oninput="calculate()">
+    </div>
+    
+    <div class="input-group">
+        <label for="calculationType">เลือกประเภทการคำนวณ:</label>
+        <select id="calculationType" onchange="calculate()">
+            <option value="VAT_EXCLUDED">ยอดที่ป้อนคือ "ราคาก่อน VAT"</option>
+            <option value="VAT_INCLUDED">ยอดที่ป้อนคือ "ราคารวม VAT"</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="whtRate">หักภาษี ณ ที่จ่าย (WHT):</label>
+        <select id="whtRate" onchange="calculate()">
+            <option value="0">ไม่หักภาษี ณ ที่จ่าย (0%)</option>
+            <option value="0.03">หัก ณ ที่จ่าย 3% (บริการ)</option>
+        </select>
+    </div>
+
+    <hr>
+
+    <h2>📊 ผลลัพธ์การคำนวณ</h2>
+    <div class="result-box">
+        <p>ราคาก่อน VAT (Net): <strong id="priceBeforeVat">0.00</strong> บาท</p>
+        <p>มูลค่า VAT 7%: <strong id="vatAmount">0.00</strong> บาท</p>
+        <p>ราคารวม VAT (Gross): <strong id="priceIncludingVat">0.00</strong> บาท</p>
+        <p>หัก ณ ที่จ่าย (WHT): <strong id="whtAmount">0.00</strong> บาท</p>
+        <p class="highlight">ยอดเงินสุทธิที่ต้องจ่าย/รับ: <span id="netPayment">0.00</span> บาท</p>
+    </div>
+</div>
+
+<script src="script.js"></script> 
+
+</body>
+</html>
